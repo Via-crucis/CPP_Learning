@@ -1,7 +1,24 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 using namespace std;
+vector <int > div (vector <int> &a , int b , int &r)
+{
+    vector <int> c;
+    r = 0;
+    for(int i = a.size() - 1 ; i >= 0 ; i--)
+    {
+        r = r * 10 + a[i];
+        c.push_back(r / b);
+        r %= b;
+    }
+    reverse(c.begin() , c.end());
+    while(c.size() > 1 && c.back() == 0) c.pop_back();
+    for(int i = c.size() - 1 ; i >= 0 ; i--) cout << c [i];
+    cout<<endl<<r;
+    return c;
+}
 vector <int> sal1 (vector <int> &a , int b)
 {
     vector <int> c;
@@ -101,6 +118,7 @@ int main()
     cin >> num1 >> num3;
     for(int i = num1.size()-1 ; i >= 0 ;i--) a.push_back(num1[i] - '0');
     for(int i = num2.size()-1 ; i >= 0 ;i--) b.push_back(num2[i] - '0');
-    sal2 (a , num3);
+    int r;
+    div(a , num3 , r);
     cout<<endl;
 }
