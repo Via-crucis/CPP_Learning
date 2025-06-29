@@ -14,7 +14,7 @@ vector <int> sal1 (vector <int> &a , int b)
         c.push_back(t % 10);
         t /= 10;
     }
-    if (t) c.push_back(t);
+    if (t) c.push_back(t); 
     while(c.size() > 1 && c.back() == 0) c.pop_back();  //去除先导0
     for(int i = c.size() - 1 ; i >= 0 ; i--) cout << c [i];
     return c;
@@ -29,12 +29,12 @@ vector <int> sal2 (vector <int> &a , int b)
     int a_size = a.size();
     for(int i = 0 ; i < a_size || t; i++)
     {
-        t += a[i] * b;
+        if (i < a_size) t += a[i] * b;
         c.push_back(t % 10);
         t /= 10;
     }
-    /*if (t) c.push_back(t);
-    while(c.size() > 1 && c.back() == 0) c.pop_back();  //去除先导0*/
+    if (t) c.push_back(t);
+    while(c.size() > 1 && c.back() == 0) c.pop_back();  //去除先导0
     for(int i = c.size() - 1 ; i >= 0 ; i--) cout << c [i];
     return c;
 
